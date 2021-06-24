@@ -500,7 +500,9 @@ class transformer_with_copyDecoder(FairseqIncrementalDecoder):
         """Maximum output length supported by the decoder."""
         if self.embed_positions is None:
             return self.max_target_positions
-        return min(self.max_target_positions, self.embed_positions.max_positions())
+        # return min(self.max_target_positions, self.embed_positions.max_positions())
+        return min(self.max_target_positions, self.embed_positions.max_positions)
+
 
     def buffered_future_mask(self, tensor):
         dim = tensor.size(0)

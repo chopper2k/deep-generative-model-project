@@ -172,7 +172,8 @@ class GraphTransformerModel(FairseqModel):
         decoder = transformer_with_copyDecoder(args, tgt_dict, decoder_embed_tokens)
         return GraphTransformerModel(encoder, decoder)
 
-    def forward(self, src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2, graph_mask, graph_mask_rev, prev_output_tokens):
+    def forward(self, src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2, graph_mask,
+                graph_mask_rev, prev_output_tokens):
         """
         Run the forward pass for an encoder-decoder model.
 
@@ -218,7 +219,8 @@ class GraphTransformerModel(FairseqModel):
         Returns:
             the decoder's output, typically of shape `(batch, tgt_len, vocab)`
         """
-        encoder_out = self.encoder(src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2, graph_mask.bool(), graph_mask_rev.bool())
+        encoder_out = self.encoder(src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2,
+                                   graph_mask.bool(), graph_mask_rev.bool())
         decoder_out = self.decoder(prev_output_tokens, encoder_out)
         return decoder_out
 
@@ -282,7 +284,8 @@ class GraphTransformerEncoder(FairseqEncoder):
             self.layer_norm = LayerNorm(embed_dim)
             self.graph_layer_norm = LayerNorm(embed_dim)
 
-    def forward(self, src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2, graph_mask, graph_mask_rev):
+    def forward(self, src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2,
+                graph_mask, graph_mask_rev):
         """
         Args:
             src_tokens (LongTensor): tokens in the source language of shape

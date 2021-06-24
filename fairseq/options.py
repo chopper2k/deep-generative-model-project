@@ -87,13 +87,12 @@ def eval_bool(x, default=False):
         return default
 
 
-def parse_args_and_arch(parser, input_args=None, parse_known=False):
+def parse_args_and_arch(parser, input_args=None, parse_known=False,modify_parser=None):
     # The parser doesn't know about model/criterion/optimizer-specific args, so
     # we parse twice. First we parse the model/criterion/optimizer, then we
     # parse a second time after adding the *-specific arguments.
     # If input_args is given, we will parse those args instead of sys.argv.
     args, _ = parser.parse_known_args(input_args)
-
     # Add model-specific args to parser.
     if hasattr(args, 'arch'):
         model_specific_group = parser.add_argument_group(

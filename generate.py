@@ -26,7 +26,7 @@ def main(args):
 
     if args.max_tokens is None and args.max_sentences is None:
         args.max_tokens = 12000
-    print(args)
+    # print(args)
 
     use_cuda = torch.cuda.is_available() and not args.cpu
 
@@ -42,7 +42,7 @@ def main(args):
     tgt_dict = task.target_dictionary
 
     # Load ensemble
-    print('| loading model(s) from {}'.format(args.path))
+    # print('| loading model(s) from {}'.format(args.path))
     models, _model_args = checkpoint_utils.load_model_ensemble(
         args.path.split(':'),
         arg_overrides=eval(args.model_overrides),

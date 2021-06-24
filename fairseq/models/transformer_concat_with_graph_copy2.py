@@ -282,7 +282,8 @@ class GraphTransformerEncoder(FairseqEncoder):
             self.layer_norm = LayerNorm(embed_dim)
             self.graph_layer_norm = LayerNorm(embed_dim)
 
-    def forward(self, src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2, graph_mask, graph_mask_rev):
+    def forward(self, src_tokens, src_lengths, enc_edge_ids, enc_edge_links1, enc_edge_links2,
+                graph_mask, graph_mask_rev):
         """
         Args:
             src_tokens (LongTensor): tokens in the source language of shape
@@ -341,7 +342,7 @@ class GraphTransformerEncoder(FairseqEncoder):
 
             x = layer(x, self.l1_gate, self.l2_gate, self.e1_gate, self.e2_gate, idx_pairs1, idx_pairs2, encoder_padding_mask, enc_edge_padding_mask, graph_mask, graph_mask_rev, enc_edge_emb)
         enc_states.append(x)
-        x = 0.5*(enc_states[0]+enc_states[0])
+        x = 0.5*(enc_states[0]+enc_states[1])
 
         # enc_states = torch.stack(enc_states, dim=3)
         # enc_states = torch.transpose(torch.transpose(enc_states, 2, 3), 0, 2)
