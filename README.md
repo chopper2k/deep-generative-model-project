@@ -27,8 +27,10 @@ python process_graph_copy.py --testpref edge-data/test --source-lang src --targe
 ## Train
 
 ```
+ARCH=transformer_concat_with_graph_copy_gigaword_big2
+
 CUDA_VISIBLE_DEVICES=0 python train.py data/bin \
-  -a transformer-graph-copy-concat2 --optimizer adam --lr 0.0001 -s src -t tgt \
+  -a $ARCH --optimizer adam --lr 0.0001 -s src -t tgt \
   --dropout 0.1 --max-tokens 2048 \
   --share-decoder-input-output-embed \
   --task translation_with_graph_attention_with_copy \
@@ -39,16 +41,14 @@ CUDA_VISIBLE_DEVICES=0 python train.py data/bin \
 ## Test
 ```
 CUDA_VISIBLE_DEVICES=0  python generate.py data/bin-copy \
---task translation_with_graph_attention_with_copy   \
---path  checkpoints/transformer-graph-copy-concat2/checkpoint_best.pt \
+--task $ARCH  \
+--path  checkpoints/$ARCH/checkpoint_best.pt \
 --batch-size 128 --beam 5 --lenpen 1.2 --replace-unk --raw-text \
 > output/transformer-graph-copy-concat2/conll14st-test.tok.trg 
 ```
 
 ## Evaluation
 ```
-ARCH=transformer-graph-copy-concat2
-
 grep ^H output/$ARCH/conll14st-test.tok.trg | sort -n -k 2 -t '-' | cut -f 1,3 > output/$ARCH/conll14st-test.tmp
 
 python output/get_output.py output/$ARCH/conll14st-test.tmp output/$ARCH/conll14st-test.out
