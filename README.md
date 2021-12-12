@@ -20,7 +20,7 @@ python preprocess_graph.py --trainpref edge-data/train --validpref edge-data/val
 ```
 python process_graph_copy.py --testpref edge-data/test --source-lang src --target-lang tgt \
 --destdir data/bin-copy  --nwordssrc 50000 --workers 5 --task translation_with_graph_attention_with_copy \
---edgedict edge-data/dict.edge.txt --srcdict bin/dict.src.txt \
+--edgedict edge-data/dict.edge.txt --srcdict data/bin/dict.src.txt \
 --tgtdict data/bin/dict.tgt.txt --dataset-impl raw
 ```
 
