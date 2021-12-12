@@ -501,7 +501,7 @@ class transformer_with_copyDecoder(FairseqIncrementalDecoder):
         if self.embed_positions is None:
             return self.max_target_positions
         # return min(self.max_target_positions, self.embed_positions.max_positions())
-        return min(self.max_target_positions, self.embed_positions.max_positions)
+        return min(self.max_target_positions, self.embed_positions.max_positions())
 
 
     def buffered_future_mask(self, tensor):
