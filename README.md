@@ -1,4 +1,4 @@
-# Deep-Generative-Model-Project
+# Project
 
 Based on sequence modeling toolkit Fairseq (https://github.com/pytorch/fairseq)
 
