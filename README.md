@@ -6,8 +6,8 @@ Based on sequence modeling toolkit Fairseq (https://github.com/pytorch/fairseq)
 - PyTorch version >= 1.4.0
 - Python version >= 3.6
 
-Data : NUCLE and Lang-8 (https://disk.pku.edu.cn:443/link/49882949AAAE7B71266EA872E4864C98
-expiry date ：2021-08-31 23:59)
+Data : NUCLE and Lang-8 (https://disk.pku.edu.cn:443/link/C80DE4D17DD784632FB9A5C31F88AEC7
+expiry date：2022-02-28 23:59)
 
 ## Preprocess
 
