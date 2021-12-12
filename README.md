@@ -13,7 +13,7 @@ expiry date：2022-02-28 23:59)
 
 ```
 python preprocess_graph.py --trainpref edge-data/train --validpref edge-data/valid \
---testpref edge-data/test--source-lang src --target-lang tgt --destdir data/bin \
+--testpref edge-data/test --source-lang src --target-lang tgt --destdir data/bin \
 --nwordssrc 50000 --workers 5 --edgedict edge-data/dict.edge.txt \
 --task translation_with_graph_attention_with_copy
 ```
