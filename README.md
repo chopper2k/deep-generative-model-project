@@ -34,7 +34,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py data/bin \
   --dropout 0.1 --max-tokens 2048 \
   --share-decoder-input-output-embed \
   --task translation_with_graph_attention_with_copy \
-  --adam-betas '(0.9, 0.98)' --save-dir checkpoints/transformer-graph-copy \
+  --adam-betas '(0.9, 0.98)' --save-dir checkpoints/$ARCH \
   --lr-scheduler reduce_lr_on_plateau --lr-shrink 0.5 --criterion cross_entropy_copy --update-freq 2
 ```
 
@@ -44,7 +44,7 @@ CUDA_VISIBLE_DEVICES=0  python generate.py data/bin-copy \
 --task $ARCH  \
 --path  checkpoints/$ARCH/checkpoint_best.pt \
 --batch-size 128 --beam 5 --lenpen 1.2 --replace-unk --raw-text \
-> output/transformer-graph-copy-concat2/conll14st-test.tok.trg 
+> output/$ARCH/conll14st-test.tok.trg 
 ```
 
 ## Evaluation
