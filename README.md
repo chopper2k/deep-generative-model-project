@@ -41,7 +41,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py data/bin \
 ## Test
 ```
 CUDA_VISIBLE_DEVICES=0  python generate.py data/bin-copy \
---task $ARCH  \
+--task translation_with_graph_attention_with_copy \
 --path  checkpoints/$ARCH/checkpoint_best.pt \
 --batch-size 128 --beam 5 --lenpen 1.2 --replace-unk --raw-text \
 > output/$ARCH/conll14st-test.tok.trg 
